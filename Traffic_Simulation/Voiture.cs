@@ -22,7 +22,7 @@ namespace Simulateur_0._0._2
 
         public Voiture()//constructeur
         {   
-            this.Source = new BitmapImage(new Uri("C:/Users/Kamil/source/repos/Traffic_Simulation/Traffic_Simulation/Images/car.png"));
+            this.Source = new BitmapImage(new Uri("C:/Users/Kamil/source/repos/Traffic-Simulation/Traffic_Simulation/Images/car.png"));
             this.Height = 20;
             this.Width = 20;
             this._xposition = 0;
@@ -37,7 +37,7 @@ namespace Simulateur_0._0._2
         {
             if (_frein)
             {
-                _vitesse = _vitesse/(2);
+                _vitesse = (float ) (_vitesse / 1.5);
                 _xposition += _vitesse;
             }
             else

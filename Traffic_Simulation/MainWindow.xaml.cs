@@ -31,8 +31,6 @@ namespace Simulateur_0._0._2
         int point_critique = 400;
         int distance_entre_vehicule = 30;
 
-
-
         Random rand = new Random();
 
         public MainWindow()
@@ -77,10 +75,7 @@ namespace Simulateur_0._0._2
                 {
                     ligneoccupee = true;
                     dernieroccupe = i;
-                    if (dernieroccupe == cars.Count)
-                    {
-
-                    }
+                    
                     break;
                 }
                 else
@@ -126,7 +121,7 @@ namespace Simulateur_0._0._2
             // VOITURE TETE LIGNE 2  Si on atteint le point critique ET champs libre : on change de ligne ATTENTION SI DEVIENT VOITURE DE TETE
             if (cars2.Count != 0)
             {
-                if ((cars2[0]._xposition >= point_critique - 20) && !(ligneoccupee))
+                if ((cars2[0]._xposition >= point_critique - 50) && !(ligneoccupee))
                 {
                     Voiture temp = cars2[0];
                     cars2.RemoveAt(0);
@@ -136,7 +131,7 @@ namespace Simulateur_0._0._2
                     }
                     else
                     {
-                        cars.Insert(dernieroccupe + 1, temp);
+                         cars.Insert(dernieroccupe + 1, temp);
                     }
                     //On affiche cette voiture et on la fait avancer
                     cars[dernieroccupe + 1]._yposition = 0;
@@ -210,11 +205,12 @@ namespace Simulateur_0._0._2
             if (cars.Count < Choix_nombrevoitures.Value)
             {
                 
-                int i = 0;
-                while (i < Choix_nombrevoitures.Value) {
+                int i = (int) Choix_nombrevoitures.Value/3;
+                while (i !=0) {
                    
                     Voiture voiture = new Voiture();
-                    if (rand.Next(100) > 40)
+
+                    /*if (rand.Next(100) > 40)
                     {
                         voiture._lane = 1;
                         voiture._yposition = 0;
@@ -225,26 +221,51 @@ namespace Simulateur_0._0._2
                         voiture._lane = 2;
                         voiture._yposition = 100;
                         cars2.Add(voiture);
-                    }
+                    }*/
+                    voiture._lane = 2;
+                    voiture._yposition = 100;
+                    cars2.Add(voiture);
                     affichage.Children.Add(voiture);
                     Canvas.SetLeft(voiture, voiture._xposition);
                     Canvas.SetTop(voiture, voiture._yposition);
-                    i++;
+                    i--;
+                }
+                int j = (int)Choix_nombrevoitures.Value - (int)(Choix_nombrevoitures.Value / 3);
+                while (j != 0)
+                {
+                    Voiture voiture = new Voiture();
+                    voiture._lane = 1;
+                    voiture._vitesse = (float) choix_vitessemax.Value/2; //TEST
+                    voiture._yposition = 0;
+                    cars.Add(voiture);
+                    affichage.Children.Add(voiture);
+                    Canvas.SetLeft(voiture, voiture._xposition);
+                    Canvas.SetTop(voiture, voiture._yposition);
+                    j--;
                 }
             }
             else {//TODO
+                timer1.Stop();
                 int i = cars.Count-1;
-                while (i> Choix_nombrevoitures.Value)
+                while (i> (int)Choix_nombrevoitures.Value - (int)(Choix_nombrevoitures.Value / 3))
                 {
-                    {
+                    
                         affichage.Children.Remove(cars[i]);
                         cars.RemoveAt(i);
                         i--;
-}
+                    
                 }
-                
+                int j = cars2.Count - 1;
+                while(j> (int)Choix_nombrevoitures.Value / 3)
+                {
+                    affichage.Children.Remove(cars2[j]);
+                    cars2.RemoveAt(j);
+                    j--;
+                }
+                timer1.Start();
+
             }
-            
+
         }
     }
 }
