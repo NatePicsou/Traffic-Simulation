@@ -1,0 +1,28 @@
+﻿<Window x:Class="Simulateur_0._0._2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Simulateur_0._0._2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="720" Width="1200" WindowStartupLocation="CenterScreen">
+    <Grid x:Name="grille">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="colonne1" Width="1028*"/>
+            <ColumnDefinition x:Name="colonne2" Width="165*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="Start" Content="Start" Grid.Column="1" Margin="0,10,0,0" VerticalAlignment="Top" Width="50" HorizontalAlignment="Center" Click="start" Height="20"/>
+        <Label x:Name="vitessemax_choix_affichage" Content="Vitesse max" Grid.Column="1" Margin="0,79,0,0" VerticalAlignment="Top" Height="26" Width="149" FontSize="8" FontFamily="Roboto" HorizontalAlignment="Center"/>
+        <Label x:Name="accelerationmax_choix_affichage" Content="Accélération max" Grid.Column="1" HorizontalAlignment="Center" Margin="0,128,0,0" VerticalAlignment="Top" Height="26" Width="149" FontSize="8" FontFamily="Roboto" RenderTransformOrigin="-0.127,0.547" Background="{x:Null}"/>
+        <Button x:Name="Ajout_voiture" Content="Ajouter une voiture" Grid.Column="1" HorizontalAlignment="Center" Margin="0,33,0,0" VerticalAlignment="Top" Width="100" Background="{x:Null}" Height="35" FontSize="10" Click="Ajout_voiture_Click"/>
+        <Slider x:Name="choix_vitessemax" Grid.Column="1" HorizontalAlignment="Center" Margin="0,105,0,0" VerticalAlignment="Top" Height="22" Width="75" HorizontalContentAlignment="Center" ValueChanged="choix_vitesse_ValueChanged" Background="{x:Null}" Maximum="5"/>
+        <Slider x:Name="choix_acceleration" Grid.Column="1" HorizontalAlignment="Center" Margin="0,152,0,0" VerticalAlignment="Top" Width="75" Height="20" ValueChanged="choix_acceleration_ValueChanged" Maximum="1.25" Value="1" Minimum="1"/>
+
+        <Canvas x:Name="affichage" HorizontalAlignment="Left"  Height="{Binding ElementName=grille, Path=ActualHeight}" Margin="0" VerticalAlignment="Center" Width="{Binding ElementName=colonne1, Path=ActualWidth}" Grid.ColumnSpan="2" />
+        <Button x:Name="Bouton_frein" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="49,195,0,0" VerticalAlignment="Top" Width="75" Click="Bouton_frein_Click" ClickMode="Release" />
+        <Slider x:Name="Choix_nombrevoitures" Grid.Column="1" HorizontalAlignment="Left" Margin="10,256,0,0" VerticalAlignment="Top" Height="29" Width="145" SmallChange="1" Maximum="50" ValueChanged="Choix_nombrevoitures_ValueChanged"/>
+
+
+
+    </Grid>
+</Window>
