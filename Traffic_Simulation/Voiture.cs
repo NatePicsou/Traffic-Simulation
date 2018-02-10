@@ -30,18 +30,16 @@ namespace Simulateur_0._0._2
             this._vitesse = 0;
             this._vitessemax = 0;
             this._acceleration = 0;
-            this._lane = 0;
+            this._lane = 1;
 
     }
         public float Move(float vmax, float a)
         {
             if (_frein)
             {
-                _vitesse = _vitesse/(2*a);
+                _vitesse = _vitesse/(2);
                 _xposition += _vitesse;
-
             }
-
             else
             {
                 if (_vitesse < 1)
